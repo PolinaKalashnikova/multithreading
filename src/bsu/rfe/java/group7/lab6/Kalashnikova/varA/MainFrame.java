@@ -58,6 +58,31 @@ public class MainFrame extends JFrame {
         ballMenu.add(addBallAction);
         JMenu controlMenu = new JMenu("Управление");
         menuBar.add(controlMenu);
+
+        Action sandpaper = new AbstractAction("Наждачная бумага"){
+            public void actionPerformed(ActionEvent event) {
+                field.setSandpaperFlag(sandpaperMenuItem.isSelected());
+            }
+        };
+        sandpaperMenuItem = new JCheckBoxMenuItem(sandpaper);
+        controlMenu.add(sandpaperMenuItem);
+        sandpaperMenuItem.setSelected(false);
+
+        sandpaperMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {try{if (sandpaperMenuItem.getState() == true){
+                String result = JOptionPane.showInputDialog(
+                        MainFrame.this,
+                        "Введите целое X");
+                BouncingBall.setSandpaperRadius(parseInt(result));
+            }
+            }
+            catch (NumberFormatException ex)
+            { JOptionPane.showMessageDialog(MainFrame.this,
+                    "Ошибка в формате записи числа", "" +
+                            "Ошибочный формат числа", JOptionPane.WARNING_MESSAGE);
+            }}
+        });
+
         Action pauseAction = new AbstractAction("Приостановить движение"){
             public void actionPerformed(ActionEvent event) {
                 field.pause();

@@ -83,25 +83,25 @@ public class BouncingBall implements Runnable {
 // Достигли левой стенки, отскакиваем право
                     speedX = -speedX;
                     x = radius;
-
+                    if (field.isSandpaperFlag() == true) radius = radius - sandpaperRadius;
                 } else
                 if (x + speedX >= field.getWidth() - radius) {
 // Достигли правой стенки, отскок влево
                     speedX = -speedX;
                     x=new Double(field.getWidth()-radius).intValue();
-
+                    if (field.isSandpaperFlag() == true) radius = radius - sandpaperRadius;
                 } else
                 if (y + speedY <= radius) {
 // Достигли верхней стенки
                     speedY = -speedY;
                     y = radius;
-
+                    if (field.isSandpaperFlag() == true) radius = radius - sandpaperRadius;
                 } else
                 if (y + speedY >= field.getHeight() - radius) {
 // Достигли нижней стенки
                     speedY = -speedY;
                     y=new Double(field.getHeight()-radius).intValue();
-
+                    if (field.isSandpaperFlag() == true) radius = radius - sandpaperRadius;
                 } else {
 // Просто смещаемся
                     x += speedX;

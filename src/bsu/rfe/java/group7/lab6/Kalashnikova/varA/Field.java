@@ -42,6 +42,15 @@ public class Field extends JPanel {
             ball.paint(canvas);
         }
     }
+
+    public void setSandpaperFlag(boolean flag){
+        sandpaperFlag = flag;
+    }
+    public boolean isSandpaperFlag()
+    {
+        return sandpaperFlag;
+    }
+
     // Метод добавления нового мяча в список
     public void addBall() {
 //Заключается в добавлении в список нового экземпляра BouncingBall
